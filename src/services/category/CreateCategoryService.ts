@@ -3,8 +3,13 @@ import { ICategoryRequest } from "../../models/interfaces/category/CategoryReque
 
 class CreateCategoryService {
     async execute({ name }: ICategoryRequest) {
-        if (name === "" || name === null || !name) {
-            throw new Error("Nome de categoria inválido!");
+        try {
+            if (name === "" || name === null || !name) {
+                throw new Error("Nome de categoria inválido!");
+            }
+        } catch (error) {
+            console.error(error.message);
+            throw error;
         }
 
         const category = await prismaClient.category.create({
@@ -16,7 +21,7 @@ class CreateCategoryService {
                 name: true,
             },
         });
-        console.log(category)
+        console.log(category);
         return category;
     }
 }
