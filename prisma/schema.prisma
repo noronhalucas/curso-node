@@ -41,8 +41,8 @@ model Product {
   createdAt   DateTime? @default(now())
   updatedAt   DateTime? @default(now())
 
-  category    Category @relation(fields: [category_id], references: [id])
-  category_id String
+  category    Category @relation(fields: [categoryId], references: [id])
+  categoryId String
   Item        Item[]
 
   @@map("products")
