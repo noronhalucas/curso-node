@@ -21,7 +21,6 @@ class CreateCategoryService {
                 name: true,
             },
         });
-        console.log(category);
         return category;
     }
 }
